@@ -1,29 +1,737 @@
 [
-  { "id":"seed-1","category":"Layout","title":"Tighten layout","summary":"Remove excess whitespace, prevent horizontal scroll","prompt":"Tighten layout; remove excess whitespace and prevent horizontal scroll; preserve padding for readability." },
-  { "id":"seed-2","category":"Layout","title":"Fix alignment","summary":"Consistent flex/grid alignment","prompt":"Fix alignment; ensure flex or grid items line up consistently; center vertically if misaligned." },
-  { "id":"seed-3","category":"Layout","title":"Floating copy box","summary":"Keep copy UI visible on scroll","prompt":"Make the copy box float; position fixed to left side of viewport; remains visible while scrolling." },
-  { "id":"seed-4","category":"Layout","title":"Responsive layout","summary":"Stack on mobile, inline on desktop","prompt":"Ensure responsive layout; elements stack on small screens and align inline on large." },
-
-  { "id":"seed-5","category":"Behaviour","title":"Add conditional logic","summary":"Trigger action when condition met","prompt":"Add logic so that when [condition], [action] happens automatically; preserve existing behaviour otherwise." },
-  { "id":"seed-6","category":"Behaviour","title":"Live binding","summary":"Inputs update outputs instantly","prompt":"Bind input values directly to output field updates; changes appear live without reloading." },
-  { "id":"seed-7","category":"Behaviour","title":"Input validation","summary":"Check required fields and show errors","prompt":"Validate user input for required fields; display inline error messages in red text." },
-  { "id":"seed-8","category":"Behaviour","title":"Debounce","summary":"Limit rapid event calls","prompt":"Debounce live input updates; prevent excessive event calls." },
-  { "id":"seed-9","category":"Behaviour","title":"Fallbacks","summary":"Graceful handling of missing data","prompt":"Add fallback if data missing; display placeholder text instead of error." },
-
-  { "id":"seed-10","category":"Data","title":"Serialize to JSON","summary":"Save to localStorage with metadata","prompt":"Serialize form data as JSON and store in localStorage; include timestamp and user ID." },
-  { "id":"seed-11","category":"Data","title":"Mapping file","summary":"Codes → friendly labels","prompt":"Map option codes from options.txt to readable text; handle missing keys gracefully." },
-  { "id":"seed-12","category":"Data","title":"Export depot schema","summary":"Structured export for Depot","prompt":"Export structured JSON matching depot_notes.schema; download as file or copy to clipboard." },
-  { "id":"seed-13","category":"Data","title":"Robust import","summary":"Restore UI state and guard errors","prompt":"Ensure imported JSON restores all UI state correctly; handle invalid JSON safely." },
-
-  { "id":"seed-14","category":"Flow","title":"Step wizard","summary":"Next/Prev + progress indicator","prompt":"Convert static sections into step-based wizard; add next/previous buttons and progress indicator." },
-  { "id":"seed-15","category":"Flow","title":"Gate future steps","summary":"Disable until current complete","prompt":"Highlight current step and disable navigation to future steps until current complete." },
-  { "id":"seed-16","category":"Flow","title":"Scroll to top","summary":"Smooth on step change","prompt":"Scroll to top of section on step change; smooth scrolling." },
-  { "id":"seed-17","category":"Flow","title":"Breadcrumbs","summary":"Clickable path/steps","prompt":"Add breadcrumbs to show step titles; link back to previous sections." },
-
-  { "id":"seed-18","category":"Dev","title":"Console markers","summary":"Debugging hooks","prompt":"Add console.log markers for key functions; include step names for debugging clarity." },
-  { "id":"seed-19","category":"Dev","title":"Cache bust","summary":"Append ?v=timestamp","prompt":"Cache bust version; append ?v=[timestamp] to script and stylesheet imports." },
-  { "id":"seed-20","category":"Dev","title":"Load optimisation","summary":"async/defer resources","prompt":"Optimise image and script loading; use async/defer where possible." },
-
-  { "id":"seed-21","category":"Output","title":"Single combined copy","summary":"Depot semicolon mode","prompt":"Generate a single combined copy box containing all sections separated by semicolons; easy to paste into Depot." },
-  { "id":"seed-22","category":"Output","title":"Multiple output modes","summary":"Customer/Engineer/Depot","prompt":"Allow multiple selectable output formats: Customer Summary (friendly), Engineer Notes (technical), Depot Format (semicolon). Use floating UI for copy buttons on desktop; fixed bottom bar on mobile." }
+  {
+    "id": "seed-1",
+    "category": "Layout",
+    "title": "Tighten layout",
+    "summary": "Remove excess whitespace, prevent horizontal scroll",
+    "prompt": "Tighten layout; remove excess whitespace and prevent horizontal scroll; preserve padding for readability."
+  },
+  {
+    "id": "seed-2",
+    "category": "Layout",
+    "title": "Fix alignment",
+    "summary": "Consistent flex/grid alignment",
+    "prompt": "Fix alignment; ensure flex or grid items line up consistently; center vertically if misaligned."
+  },
+  {
+    "id": "seed-3",
+    "category": "Layout",
+    "title": "Floating copy box",
+    "summary": "Keep copy UI visible on scroll",
+    "prompt": "Make the copy box float; position fixed to left side of viewport; remains visible while scrolling."
+  },
+  {
+    "id": "seed-4",
+    "category": "Layout",
+    "title": "Responsive layout",
+    "summary": "Stack on mobile, inline on desktop",
+    "prompt": "Ensure responsive layout; elements stack on small screens and align inline on large."
+  },
+  {
+    "id": "seed-5",
+    "category": "Behaviour",
+    "title": "Add conditional logic",
+    "summary": "Trigger action when condition met",
+    "prompt": "Add logic so that when [condition], [action] happens automatically; preserve existing behaviour otherwise."
+  },
+  {
+    "id": "seed-6",
+    "category": "Behaviour",
+    "title": "Live binding",
+    "summary": "Inputs update outputs instantly",
+    "prompt": "Bind input values directly to output field updates; changes appear live without reloading."
+  },
+  {
+    "id": "seed-7",
+    "category": "Behaviour",
+    "title": "Input validation",
+    "summary": "Check required fields and show errors",
+    "prompt": "Validate user input for required fields; display inline error messages in red text."
+  },
+  {
+    "id": "seed-8",
+    "category": "Behaviour",
+    "title": "Debounce",
+    "summary": "Limit rapid event calls",
+    "prompt": "Debounce live input updates; prevent excessive event calls."
+  },
+  {
+    "id": "seed-9",
+    "category": "Behaviour",
+    "title": "Fallbacks",
+    "summary": "Graceful handling of missing data",
+    "prompt": "Add fallback if data missing; display placeholder text instead of error."
+  },
+  {
+    "id": "seed-10",
+    "category": "Data",
+    "title": "Serialize to JSON",
+    "summary": "Save to localStorage with metadata",
+    "prompt": "Serialize form data as JSON and store in localStorage; include timestamp and user ID."
+  },
+  {
+    "id": "seed-11",
+    "category": "Data",
+    "title": "Mapping file",
+    "summary": "Codes → friendly labels",
+    "prompt": "Map option codes from options.txt to readable text; handle missing keys gracefully."
+  },
+  {
+    "id": "seed-12",
+    "category": "Data",
+    "title": "Export depot schema",
+    "summary": "Structured export for Depot",
+    "prompt": "Export structured JSON matching depot_notes.schema; download as file or copy to clipboard."
+  },
+  {
+    "id": "seed-13",
+    "category": "Data",
+    "title": "Robust import",
+    "summary": "Restore UI state and guard errors",
+    "prompt": "Ensure imported JSON restores all UI state correctly; handle invalid JSON safely."
+  },
+  {
+    "id": "seed-14",
+    "category": "Flow",
+    "title": "Step wizard",
+    "summary": "Next/Prev + progress indicator",
+    "prompt": "Convert static sections into step-based wizard; add next/previous buttons and progress indicator."
+  },
+  {
+    "id": "seed-15",
+    "category": "Flow",
+    "title": "Gate future steps",
+    "summary": "Disable until current complete",
+    "prompt": "Highlight current step and disable navigation to future steps until current complete."
+  },
+  {
+    "id": "seed-16",
+    "category": "Flow",
+    "title": "Scroll to top",
+    "summary": "Smooth on step change",
+    "prompt": "Scroll to top of section on step change; smooth scrolling."
+  },
+  {
+    "id": "seed-17",
+    "category": "Flow",
+    "title": "Breadcrumbs",
+    "summary": "Clickable path/steps",
+    "prompt": "Add breadcrumbs to show step titles; link back to previous sections."
+  },
+  {
+    "id": "seed-18",
+    "category": "Dev",
+    "title": "Console markers",
+    "summary": "Debugging hooks",
+    "prompt": "Add console.log markers for key functions; include step names for debugging clarity."
+  },
+  {
+    "id": "seed-19",
+    "category": "Dev",
+    "title": "Cache bust",
+    "summary": "Append ?v=timestamp",
+    "prompt": "Cache bust version; append ?v=[timestamp] to script and stylesheet imports."
+  },
+  {
+    "id": "seed-20",
+    "category": "Dev",
+    "title": "Load optimisation",
+    "summary": "async/defer resources",
+    "prompt": "Optimise image and script loading; use async/defer where possible."
+  },
+  {
+    "id": "seed-21",
+    "category": "Output",
+    "title": "Single combined copy",
+    "summary": "Depot semicolon mode",
+    "prompt": "Generate a single combined copy box containing all sections separated by semicolons; easy to paste into Depot."
+  },
+  {
+    "id": "seed-22",
+    "category": "Output",
+    "title": "Multiple output modes",
+    "summary": "Customer/Engineer/Depot",
+    "prompt": "Allow multiple selectable output formats: Customer Summary (friendly), Engineer Notes (technical), Depot Format (semicolon). Use floating UI for copy buttons on desktop; fixed bottom bar on mobile."
+  },
+  {
+    "id": "glossary-1001",
+    "category": "Glossary – App Structure & Components",
+    "title": "Frontend",
+    "summary": "Visible part users interact with (HTML, CSS, JS, SwiftUI).",
+    "prompt": "Frontend: Visible part users interact with (HTML, CSS, JS, SwiftUI)."
+  },
+  {
+    "id": "glossary-1002",
+    "category": "Glossary – App Structure & Components",
+    "title": "Backend",
+    "summary": "Handles logic, data, and APIs.",
+    "prompt": "Backend: Handles logic, data, and APIs."
+  },
+  {
+    "id": "glossary-1003",
+    "category": "Glossary – App Structure & Components",
+    "title": "PWA",
+    "summary": "Progressive Web App that installs and works offline.",
+    "prompt": "PWA: Progressive Web App that installs and works offline."
+  },
+  {
+    "id": "glossary-1004",
+    "category": "Glossary – App Structure & Components",
+    "title": "Manifest file",
+    "summary": "Defines name, icons, theme, and install behaviour.",
+    "prompt": "Manifest file: Defines name, icons, theme, and install behaviour."
+  },
+  {
+    "id": "glossary-1005",
+    "category": "Glossary – App Structure & Components",
+    "title": "Service Worker",
+    "summary": "Manages offline caching and updates.",
+    "prompt": "Service Worker: Manages offline caching and updates."
+  },
+  {
+    "id": "glossary-1006",
+    "category": "Glossary – App Structure & Components",
+    "title": "Component",
+    "summary": "Reusable building block like a button, step, or widget.",
+    "prompt": "Component: Reusable building block like a button, step, or widget."
+  },
+  {
+    "id": "glossary-1007",
+    "category": "Glossary – App Structure & Components",
+    "title": "Module",
+    "summary": "Collection of related components or features.",
+    "prompt": "Module: Collection of related components or features."
+  },
+  {
+    "id": "glossary-1008",
+    "category": "Glossary – App Structure & Components",
+    "title": "State",
+    "summary": "Current data or condition of the app.",
+    "prompt": "State: Current data or condition of the app."
+  },
+  {
+    "id": "glossary-1009",
+    "category": "Glossary – App Structure & Components",
+    "title": "Event listener",
+    "summary": "Detects user actions like clicks or input.",
+    "prompt": "Event listener: Detects user actions like clicks or input."
+  },
+  {
+    "id": "glossary-1010",
+    "category": "Glossary – App Structure & Components",
+    "title": "DOM",
+    "summary": "Browser’s live page structure controlled by JavaScript.",
+    "prompt": "DOM: Browser’s live page structure controlled by JavaScript."
+  },
+  {
+    "id": "glossary-1011",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "UI",
+    "summary": "User interface—the part that is seen.",
+    "prompt": "UI: User interface—the part that is seen."
+  },
+  {
+    "id": "glossary-1012",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "UX",
+    "summary": "User experience—how it feels to use.",
+    "prompt": "UX: User experience—how it feels to use."
+  },
+  {
+    "id": "glossary-1013",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Responsive design",
+    "summary": "Adapts layout to screen size.",
+    "prompt": "Responsive design: Adapts layout to screen size."
+  },
+  {
+    "id": "glossary-1014",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Container",
+    "summary": "Wrapper element for content.",
+    "prompt": "Container: Wrapper element for content."
+  },
+  {
+    "id": "glossary-1015",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Padding",
+    "summary": "Space inside an element’s border.",
+    "prompt": "Padding: Space inside an element’s border."
+  },
+  {
+    "id": "glossary-1016",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Margin",
+    "summary": "Space outside an element.",
+    "prompt": "Margin: Space outside an element."
+  },
+  {
+    "id": "glossary-1017",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Overflow",
+    "summary": "Behaviour when content exceeds its space.",
+    "prompt": "Overflow: Behaviour when content exceeds its space."
+  },
+  {
+    "id": "glossary-1018",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Z-index",
+    "summary": "Layer order for overlapping elements.",
+    "prompt": "Z-index: Layer order for overlapping elements."
+  },
+  {
+    "id": "glossary-1019",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Flexbox / Grid",
+    "summary": "CSS layout systems for arranging elements.",
+    "prompt": "Flexbox / Grid: CSS layout systems for arranging elements."
+  },
+  {
+    "id": "glossary-1020",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Breakpoint",
+    "summary": "Width where the layout changes.",
+    "prompt": "Breakpoint: Width where the layout changes."
+  },
+  {
+    "id": "glossary-1021",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Hover / Active / Focus",
+    "summary": "Interaction visual states.",
+    "prompt": "Hover / Active / Focus: Interaction visual states."
+  },
+  {
+    "id": "glossary-1022",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Modal / Popup",
+    "summary": "Overlay used for focused actions.",
+    "prompt": "Modal / Popup: Overlay used for focused actions."
+  },
+  {
+    "id": "glossary-1023",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Floating element",
+    "summary": "Stays visible while scrolling.",
+    "prompt": "Floating element: Stays visible while scrolling."
+  },
+  {
+    "id": "glossary-1024",
+    "category": "Glossary – Layout, Design & UX",
+    "title": "Shadow / Border radius",
+    "summary": "Visual depth and shape styling.",
+    "prompt": "Shadow / Border radius: Visual depth and shape styling."
+  },
+  {
+    "id": "glossary-1025",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Function",
+    "summary": "Block of code for a specific task.",
+    "prompt": "Function: Block of code for a specific task."
+  },
+  {
+    "id": "glossary-1026",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Loop",
+    "summary": "Repeats a block of code.",
+    "prompt": "Loop: Repeats a block of code."
+  },
+  {
+    "id": "glossary-1027",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Conditional / If-statement",
+    "summary": "Runs code only when criteria are met.",
+    "prompt": "Conditional / If-statement: Runs code only when criteria are met."
+  },
+  {
+    "id": "glossary-1028",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Event handler",
+    "summary": "Runs code when triggered by an action.",
+    "prompt": "Event handler: Runs code when triggered by an action."
+  },
+  {
+    "id": "glossary-1029",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Binding",
+    "summary": "Links data to the UI for live updates.",
+    "prompt": "Binding: Links data to the UI for live updates."
+  },
+  {
+    "id": "glossary-1030",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Validation",
+    "summary": "Checks input correctness.",
+    "prompt": "Validation: Checks input correctness."
+  },
+  {
+    "id": "glossary-1031",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Error handling",
+    "summary": "Graceful reaction to problems.",
+    "prompt": "Error handling: Graceful reaction to problems."
+  },
+  {
+    "id": "glossary-1032",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "API call",
+    "summary": "Communicates with other systems.",
+    "prompt": "API call: Communicates with other systems."
+  },
+  {
+    "id": "glossary-1033",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Local storage / IndexedDB",
+    "summary": "Offline data saving in the browser.",
+    "prompt": "Local storage / IndexedDB: Offline data saving in the browser."
+  },
+  {
+    "id": "glossary-1034",
+    "category": "Glossary – Behaviour, Logic & Interaction",
+    "title": "Debounce / Throttle",
+    "summary": "Limits how often functions fire.",
+    "prompt": "Debounce / Throttle: Limits how often functions fire."
+  },
+  {
+    "id": "glossary-1035",
+    "category": "Glossary – Data & File Handling",
+    "title": "JSON",
+    "summary": "Structured text format for data.",
+    "prompt": "JSON: Structured text format for data."
+  },
+  {
+    "id": "glossary-1036",
+    "category": "Glossary – Data & File Handling",
+    "title": "Array",
+    "summary": "List of values.",
+    "prompt": "Array: List of values."
+  },
+  {
+    "id": "glossary-1037",
+    "category": "Glossary – Data & File Handling",
+    "title": "Object",
+    "summary": "Structured key-value data unit.",
+    "prompt": "Object: Structured key-value data unit."
+  },
+  {
+    "id": "glossary-1038",
+    "category": "Glossary – Data & File Handling",
+    "title": "Schema",
+    "summary": "Definition of a data structure.",
+    "prompt": "Schema: Definition of a data structure."
+  },
+  {
+    "id": "glossary-1039",
+    "category": "Glossary – Data & File Handling",
+    "title": "Mapping file",
+    "summary": "Converts codes to readable text.",
+    "prompt": "Mapping file: Converts codes to readable text."
+  },
+  {
+    "id": "glossary-1040",
+    "category": "Glossary – Data & File Handling",
+    "title": "Export / Import",
+    "summary": "Saving or loading data.",
+    "prompt": "Export / Import: Saving or loading data."
+  },
+  {
+    "id": "glossary-1041",
+    "category": "Glossary – Data & File Handling",
+    "title": "Serialization",
+    "summary": "Converting data into text form.",
+    "prompt": "Serialization: Converting data into text form."
+  },
+  {
+    "id": "glossary-1042",
+    "category": "Glossary – Navigation & Flow",
+    "title": "Step section / Wizard",
+    "summary": "Multi-stage user flow.",
+    "prompt": "Step section / Wizard: Multi-stage user flow."
+  },
+  {
+    "id": "glossary-1043",
+    "category": "Glossary – Navigation & Flow",
+    "title": "Breadcrumbs",
+    "summary": "Shows navigation path or progress.",
+    "prompt": "Breadcrumbs: Shows navigation path or progress."
+  },
+  {
+    "id": "glossary-1044",
+    "category": "Glossary – Navigation & Flow",
+    "title": "Route / Hash",
+    "summary": "URL fragment that selects a page or step.",
+    "prompt": "Route / Hash: URL fragment that selects a page or step."
+  },
+  {
+    "id": "glossary-1045",
+    "category": "Glossary – Navigation & Flow",
+    "title": "Backstack",
+    "summary": "Navigation history.",
+    "prompt": "Backstack: Navigation history."
+  },
+  {
+    "id": "glossary-1046",
+    "category": "Glossary – Navigation & Flow",
+    "title": "Transition / Animation",
+    "summary": "Visual change effect between views.",
+    "prompt": "Transition / Animation: Visual change effect between views."
+  },
+  {
+    "id": "glossary-1047",
+    "category": "Glossary – Navigation & Flow",
+    "title": "Scroll locking",
+    "summary": "Prevents background scrolling.",
+    "prompt": "Scroll locking: Prevents background scrolling."
+  },
+  {
+    "id": "glossary-1048",
+    "category": "Glossary – Development & Debugging",
+    "title": "Repo",
+    "summary": "GitHub project folder.",
+    "prompt": "Repo: GitHub project folder."
+  },
+  {
+    "id": "glossary-1049",
+    "category": "Glossary – Development & Debugging",
+    "title": "Commit",
+    "summary": "Saved change in version control.",
+    "prompt": "Commit: Saved change in version control."
+  },
+  {
+    "id": "glossary-1050",
+    "category": "Glossary – Development & Debugging",
+    "title": "Branch",
+    "summary": "Version used for testing new features.",
+    "prompt": "Branch: Version used for testing new features."
+  },
+  {
+    "id": "glossary-1051",
+    "category": "Glossary – Development & Debugging",
+    "title": "Merge / Pull request",
+    "summary": "Combine branch changes.",
+    "prompt": "Merge / Pull request: Combine branch changes."
+  },
+  {
+    "id": "glossary-1052",
+    "category": "Glossary – Development & Debugging",
+    "title": "Console log",
+    "summary": "Debugging output shown in the console.",
+    "prompt": "Console log: Debugging output shown in the console."
+  },
+  {
+    "id": "glossary-1053",
+    "category": "Glossary – Development & Debugging",
+    "title": "Linting",
+    "summary": "Automatic code checking.",
+    "prompt": "Linting: Automatic code checking."
+  },
+  {
+    "id": "glossary-1054",
+    "category": "Glossary – Development & Debugging",
+    "title": "Build / Deploy",
+    "summary": "Publishing the app.",
+    "prompt": "Build / Deploy: Publishing the app."
+  },
+  {
+    "id": "glossary-1055",
+    "category": "Glossary – Development & Debugging",
+    "title": "Cache",
+    "summary": "Stored files kept for speed.",
+    "prompt": "Cache: Stored files kept for speed."
+  },
+  {
+    "id": "glossary-1056",
+    "category": "Glossary – Development & Debugging",
+    "title": "Hot reload",
+    "summary": "Live refresh during coding.",
+    "prompt": "Hot reload: Live refresh during coding."
+  },
+  {
+    "id": "glossary-1057",
+    "category": "Glossary – Native & Hybrid (iOS)",
+    "title": "Xcode",
+    "summary": "Apple’s development environment.",
+    "prompt": "Xcode: Apple’s development environment."
+  },
+  {
+    "id": "glossary-1058",
+    "category": "Glossary – Native & Hybrid (iOS)",
+    "title": "Swift / SwiftUI",
+    "summary": "Apple’s coding language and UI system.",
+    "prompt": "Swift / SwiftUI: Apple’s coding language and UI system."
+  },
+  {
+    "id": "glossary-1059",
+    "category": "Glossary – Native & Hybrid (iOS)",
+    "title": "Wrapper",
+    "summary": "Native shell for a PWA via WebView.",
+    "prompt": "Wrapper: Native shell for a PWA via WebView."
+  },
+  {
+    "id": "glossary-1060",
+    "category": "Glossary – Native & Hybrid (iOS)",
+    "title": "Local notification",
+    "summary": "iPhone alert sent from the app.",
+    "prompt": "Local notification: iPhone alert sent from the app."
+  },
+  {
+    "id": "glossary-1061",
+    "category": "Glossary – Native & Hybrid (iOS)",
+    "title": "Permission prompt",
+    "summary": "iOS dialog that asks for access.",
+    "prompt": "Permission prompt: iOS dialog that asks for access."
+  },
+  {
+    "id": "glossary-1062",
+    "category": "Glossary – Native & Hybrid (iOS)",
+    "title": "Sandboxing",
+    "summary": "Data isolation for app security.",
+    "prompt": "Sandboxing: Data isolation for app security."
+  },
+  {
+    "id": "glossary-1063",
+    "category": "Glossary – Voice, Camera & Media",
+    "title": "Whisper / Speech-to-Text",
+    "summary": "Transcribes speech to text.",
+    "prompt": "Whisper / Speech-to-Text: Transcribes speech to text."
+  },
+  {
+    "id": "glossary-1064",
+    "category": "Glossary – Voice, Camera & Media",
+    "title": "Audio buffer / stream",
+    "summary": "Raw audio data.",
+    "prompt": "Audio buffer / stream: Raw audio data."
+  },
+  {
+    "id": "glossary-1065",
+    "category": "Glossary – Voice, Camera & Media",
+    "title": "Media capture",
+    "summary": "Using the camera or microphone.",
+    "prompt": "Media capture: Using the camera or microphone."
+  },
+  {
+    "id": "glossary-1066",
+    "category": "Glossary – Voice, Camera & Media",
+    "title": "Attachment / Metadata",
+    "summary": "Linking notes to photos or location information.",
+    "prompt": "Attachment / Metadata: Linking notes to photos or location information."
+  },
+  {
+    "id": "glossary-1067",
+    "category": "Glossary – Voice, Camera & Media",
+    "title": "EXIF data",
+    "summary": "Photo metadata like timestamp or GPS.",
+    "prompt": "EXIF data: Photo metadata like timestamp or GPS."
+  },
+  {
+    "id": "glossary-1068",
+    "category": "Glossary – Connectivity & Integration",
+    "title": "Webhook",
+    "summary": "Endpoint receiving automatic updates.",
+    "prompt": "Webhook: Endpoint receiving automatic updates."
+  },
+  {
+    "id": "glossary-1069",
+    "category": "Glossary – Connectivity & Integration",
+    "title": "API key / Token",
+    "summary": "Credential for service access.",
+    "prompt": "API key / Token: Credential for service access."
+  },
+  {
+    "id": "glossary-1070",
+    "category": "Glossary – Connectivity & Integration",
+    "title": "OAuth / Authentication",
+    "summary": "Secure login process.",
+    "prompt": "OAuth / Authentication: Secure login process."
+  },
+  {
+    "id": "glossary-1071",
+    "category": "Glossary – Connectivity & Integration",
+    "title": "Sync / Cloud backup",
+    "summary": "Keeps data consistent across devices.",
+    "prompt": "Sync / Cloud backup: Keeps data consistent across devices."
+  },
+  {
+    "id": "glossary-1072",
+    "category": "Glossary – Connectivity & Integration",
+    "title": "Latency",
+    "summary": "Delay in data transmission.",
+    "prompt": "Latency: Delay in data transmission."
+  },
+  {
+    "id": "glossary-1073",
+    "category": "Glossary – Connectivity & Integration",
+    "title": "Worker / Background process",
+    "summary": "Runs separately from the UI thread.",
+    "prompt": "Worker / Background process: Runs separately from the UI thread."
+  },
+  {
+    "id": "glossary-1074",
+    "category": "Glossary – Describing Changes",
+    "title": "Tighten layout",
+    "summary": "Reduce spacing or overflow.",
+    "prompt": "Tighten layout: Reduce spacing or overflow."
+  },
+  {
+    "id": "glossary-1075",
+    "category": "Glossary – Describing Changes",
+    "title": "Make it float",
+    "summary": "Keep an element visible on scroll.",
+    "prompt": "Make it float: Keep an element visible on scroll."
+  },
+  {
+    "id": "glossary-1076",
+    "category": "Glossary – Describing Changes",
+    "title": "Fix alignment",
+    "summary": "Adjust flex/grid or padding for alignment.",
+    "prompt": "Fix alignment: Adjust flex/grid or padding for alignment."
+  },
+  {
+    "id": "glossary-1077",
+    "category": "Glossary – Describing Changes",
+    "title": "Simplify structure",
+    "summary": "Remove nested or redundant code.",
+    "prompt": "Simplify structure: Remove nested or redundant code."
+  },
+  {
+    "id": "glossary-1078",
+    "category": "Glossary – Describing Changes",
+    "title": "Optimise load",
+    "summary": "Reduce scripts or images for speed.",
+    "prompt": "Optimise load: Reduce scripts or images for speed."
+  },
+  {
+    "id": "glossary-1079",
+    "category": "Glossary – Describing Changes",
+    "title": "Add logic for",
+    "summary": "Create a new condition or automation.",
+    "prompt": "Add logic for: Create a new condition or automation."
+  },
+  {
+    "id": "glossary-1080",
+    "category": "Glossary – Describing Changes",
+    "title": "Make it dynamic",
+    "summary": "Auto-update based on data.",
+    "prompt": "Make it dynamic: Auto-update based on data."
+  },
+  {
+    "id": "glossary-1081",
+    "category": "Glossary – Describing Changes",
+    "title": "Bind value to output",
+    "summary": "Link input directly to the result.",
+    "prompt": "Bind value to output: Link input directly to the result."
+  },
+  {
+    "id": "glossary-1082",
+    "category": "Glossary – Describing Changes",
+    "title": "Add fallback",
+    "summary": "Handle missing or failed data.",
+    "prompt": "Add fallback: Handle missing or failed data."
+  },
+  {
+    "id": "glossary-1083",
+    "category": "Glossary – Describing Changes",
+    "title": "Cache bust",
+    "summary": "Force reload of the latest version.",
+    "prompt": "Cache bust: Force reload of the latest version."
+  }
 ]
