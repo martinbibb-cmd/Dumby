@@ -1,69 +1,29 @@
-{
-  "version": 1,
-  "nodes": [
-    {
-      "id": "brainstorm",
-      "parentId": null,
-      "category": "Ideation",
-      "title": "Brainstorm variations",
-      "summary": "Quickly explore several angles for a raw idea.",
-      "prompt": "You are a collaborative ideation partner. Given the seed idea below, suggest five distinct directions with a short rationale for each. Use crisp language and focus on differentiation. Seed idea: {{idea}}"
-    },
-    {
-      "id": "brainstorm-outline",
-      "parentId": "brainstorm",
-      "category": "Ideation",
-      "title": "Turn a favorite idea into an outline",
-      "summary": "Expand the strongest variation from the brainstorm into a structured outline.",
-      "prompt": "We selected the direction '{{direction}}'. Produce a detailed outline with 5-7 sections. Each section should include a summary sentence and 2-3 bullet talking points."
-    },
-    {
-      "id": "brainstorm-research",
-      "parentId": "brainstorm",
-      "category": "Research",
-      "title": "Research questions",
-      "summary": "Capture unknowns that block progress on the idea.",
-      "prompt": "For the concept '{{concept}}', list the most important unanswered questions grouped by theme. Prioritize feasibility, impact, and audience resonance."
-    },
-    {
-      "id": "writing-draft",
-      "parentId": null,
-      "category": "Writing",
-      "title": "Draft a persuasive summary",
-      "summary": "Craft an approachable one-page summary to share with stakeholders.",
-      "prompt": "Write a persuasive one-page summary of '{{topic}}'. Use an inviting tone, highlight the problem, proposed solution, differentiators, and a clear call-to-action."
-    },
-    {
-      "id": "writing-headlines",
-      "parentId": "writing-draft",
-      "category": "Writing",
-      "title": "Headline variations",
-      "summary": "Give headline options aligned with the summary's angle.",
-      "prompt": "Generate ten concise headlines for the summary above. Provide a mix of bold, descriptive, and curiosity-driven angles." 
-    },
-    {
-      "id": "writing-feedback",
-      "parentId": "writing-draft",
-      "category": "Review",
-      "title": "Anticipate objections",
-      "summary": "List possible objections readers may raise and craft responses.",
-      "prompt": "From the perspective of a skeptical stakeholder, list key objections or questions after reading the summary and provide thoughtful rebuttals." 
-    },
-    {
-      "id": "analysis-retro",
-      "parentId": null,
-      "category": "Analysis",
-      "title": "Retro prompt",
-      "summary": "Run a quick retrospective on a completed sprint or project.",
-      "prompt": "Facilitate a retro for '{{project}}'. Provide bullet lists for What went well, What was challenging, and Experiments for next time. Keep it constructive and specific." 
-    },
-    {
-      "id": "analysis-action",
-      "parentId": "analysis-retro",
-      "category": "Analysis",
-      "title": "Action items",
-      "summary": "Translate retro insights into accountable tasks.",
-      "prompt": "Convert the retro findings into a prioritized list of action items. Include owner suggestions and success signals for each item." 
-    }
-  ]
-}
+[
+  { "id":"seed-1","category":"Layout","title":"Tighten layout","summary":"Remove excess whitespace, prevent horizontal scroll","prompt":"Tighten layout; remove excess whitespace and prevent horizontal scroll; preserve padding for readability." },
+  { "id":"seed-2","category":"Layout","title":"Fix alignment","summary":"Consistent flex/grid alignment","prompt":"Fix alignment; ensure flex or grid items line up consistently; center vertically if misaligned." },
+  { "id":"seed-3","category":"Layout","title":"Floating copy box","summary":"Keep copy UI visible on scroll","prompt":"Make the copy box float; position fixed to left side of viewport; remains visible while scrolling." },
+  { "id":"seed-4","category":"Layout","title":"Responsive layout","summary":"Stack on mobile, inline on desktop","prompt":"Ensure responsive layout; elements stack on small screens and align inline on large." },
+
+  { "id":"seed-5","category":"Behaviour","title":"Add conditional logic","summary":"Trigger action when condition met","prompt":"Add logic so that when [condition], [action] happens automatically; preserve existing behaviour otherwise." },
+  { "id":"seed-6","category":"Behaviour","title":"Live binding","summary":"Inputs update outputs instantly","prompt":"Bind input values directly to output field updates; changes appear live without reloading." },
+  { "id":"seed-7","category":"Behaviour","title":"Input validation","summary":"Check required fields and show errors","prompt":"Validate user input for required fields; display inline error messages in red text." },
+  { "id":"seed-8","category":"Behaviour","title":"Debounce","summary":"Limit rapid event calls","prompt":"Debounce live input updates; prevent excessive event calls." },
+  { "id":"seed-9","category":"Behaviour","title":"Fallbacks","summary":"Graceful handling of missing data","prompt":"Add fallback if data missing; display placeholder text instead of error." },
+
+  { "id":"seed-10","category":"Data","title":"Serialize to JSON","summary":"Save to localStorage with metadata","prompt":"Serialize form data as JSON and store in localStorage; include timestamp and user ID." },
+  { "id":"seed-11","category":"Data","title":"Mapping file","summary":"Codes → friendly labels","prompt":"Map option codes from options.txt to readable text; handle missing keys gracefully." },
+  { "id":"seed-12","category":"Data","title":"Export depot schema","summary":"Structured export for Depot","prompt":"Export structured JSON matching depot_notes.schema; download as file or copy to clipboard." },
+  { "id":"seed-13","category":"Data","title":"Robust import","summary":"Restore UI state and guard errors","prompt":"Ensure imported JSON restores all UI state correctly; handle invalid JSON safely." },
+
+  { "id":"seed-14","category":"Flow","title":"Step wizard","summary":"Next/Prev + progress indicator","prompt":"Convert static sections into step-based wizard; add next/previous buttons and progress indicator." },
+  { "id":"seed-15","category":"Flow","title":"Gate future steps","summary":"Disable until current complete","prompt":"Highlight current step and disable navigation to future steps until current complete." },
+  { "id":"seed-16","category":"Flow","title":"Scroll to top","summary":"Smooth on step change","prompt":"Scroll to top of section on step change; smooth scrolling." },
+  { "id":"seed-17","category":"Flow","title":"Breadcrumbs","summary":"Clickable path/steps","prompt":"Add breadcrumbs to show step titles; link back to previous sections." },
+
+  { "id":"seed-18","category":"Dev","title":"Console markers","summary":"Debugging hooks","prompt":"Add console.log markers for key functions; include step names for debugging clarity." },
+  { "id":"seed-19","category":"Dev","title":"Cache bust","summary":"Append ?v=timestamp","prompt":"Cache bust version; append ?v=[timestamp] to script and stylesheet imports." },
+  { "id":"seed-20","category":"Dev","title":"Load optimisation","summary":"async/defer resources","prompt":"Optimise image and script loading; use async/defer where possible." },
+
+  { "id":"seed-21","category":"Output","title":"Single combined copy","summary":"Depot semicolon mode","prompt":"Generate a single combined copy box containing all sections separated by semicolons; easy to paste into Depot." },
+  { "id":"seed-22","category":"Output","title":"Multiple output modes","summary":"Customer/Engineer/Depot","prompt":"Allow multiple selectable output formats: Customer Summary (friendly), Engineer Notes (technical), Depot Format (semicolon). Use floating UI for copy buttons on desktop; fixed bottom bar on mobile." }
+]
