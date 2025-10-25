@@ -1,1 +1,69 @@
-1
+{
+  "version": 1,
+  "nodes": [
+    {
+      "id": "brainstorm",
+      "parentId": null,
+      "category": "Ideation",
+      "title": "Brainstorm variations",
+      "summary": "Quickly explore several angles for a raw idea.",
+      "prompt": "You are a collaborative ideation partner. Given the seed idea below, suggest five distinct directions with a short rationale for each. Use crisp language and focus on differentiation. Seed idea: {{idea}}"
+    },
+    {
+      "id": "brainstorm-outline",
+      "parentId": "brainstorm",
+      "category": "Ideation",
+      "title": "Turn a favorite idea into an outline",
+      "summary": "Expand the strongest variation from the brainstorm into a structured outline.",
+      "prompt": "We selected the direction '{{direction}}'. Produce a detailed outline with 5-7 sections. Each section should include a summary sentence and 2-3 bullet talking points."
+    },
+    {
+      "id": "brainstorm-research",
+      "parentId": "brainstorm",
+      "category": "Research",
+      "title": "Research questions",
+      "summary": "Capture unknowns that block progress on the idea.",
+      "prompt": "For the concept '{{concept}}', list the most important unanswered questions grouped by theme. Prioritize feasibility, impact, and audience resonance."
+    },
+    {
+      "id": "writing-draft",
+      "parentId": null,
+      "category": "Writing",
+      "title": "Draft a persuasive summary",
+      "summary": "Craft an approachable one-page summary to share with stakeholders.",
+      "prompt": "Write a persuasive one-page summary of '{{topic}}'. Use an inviting tone, highlight the problem, proposed solution, differentiators, and a clear call-to-action."
+    },
+    {
+      "id": "writing-headlines",
+      "parentId": "writing-draft",
+      "category": "Writing",
+      "title": "Headline variations",
+      "summary": "Give headline options aligned with the summary's angle.",
+      "prompt": "Generate ten concise headlines for the summary above. Provide a mix of bold, descriptive, and curiosity-driven angles." 
+    },
+    {
+      "id": "writing-feedback",
+      "parentId": "writing-draft",
+      "category": "Review",
+      "title": "Anticipate objections",
+      "summary": "List possible objections readers may raise and craft responses.",
+      "prompt": "From the perspective of a skeptical stakeholder, list key objections or questions after reading the summary and provide thoughtful rebuttals." 
+    },
+    {
+      "id": "analysis-retro",
+      "parentId": null,
+      "category": "Analysis",
+      "title": "Retro prompt",
+      "summary": "Run a quick retrospective on a completed sprint or project.",
+      "prompt": "Facilitate a retro for '{{project}}'. Provide bullet lists for What went well, What was challenging, and Experiments for next time. Keep it constructive and specific." 
+    },
+    {
+      "id": "analysis-action",
+      "parentId": "analysis-retro",
+      "category": "Analysis",
+      "title": "Action items",
+      "summary": "Translate retro insights into accountable tasks.",
+      "prompt": "Convert the retro findings into a prioritized list of action items. Include owner suggestions and success signals for each item." 
+    }
+  ]
+}
