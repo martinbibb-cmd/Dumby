@@ -31,13 +31,23 @@
   </div></div>
 
   <!-- Toolbar -->
-  <div class="bar"><div class="wrap" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-    <input id="search" type="search" placeholder="Search prompts, terms, categories…" aria-label="Search prompts"
-           style="flex:1;min-width:220px;padding:.55rem .7rem;border-radius:8px;border:1px solid #2a2a2f;background:#0e0f12;color:#f2f2f2">
-    <label><input id="toggle-descriptions" type="checkbox" checked> Show summaries</label>
-    <label><input id="toggle-compact" type="checkbox"> Compact</label>
-    <label><input id="toggle-dark" type="checkbox"> Dark</label>
-  </div></div>
+  <div class="bar">
+    <div class="wrap toolbar" id="toolbar">
+      <div class="toolbar-row">
+        <input id="search" type="search" placeholder="Search prompts, summaries, bodies…" aria-label="Search prompts">
+        <div class="toolbar-group" role="group" aria-label="Tag filters">
+          <span class="toolbar-label">Filter tags</span>
+          <div id="tag-filter" class="tag-filter"><span class="tag-filter-empty">No tags yet</span></div>
+        </div>
+        <label class="favorite-toggle"><input id="toggle-favorites" type="checkbox"> Show favorites</label>
+      </div>
+      <div class="toolbar-row secondary">
+        <label><input id="toggle-descriptions" type="checkbox" checked> Show summaries</label>
+        <label><input id="toggle-compact" type="checkbox"> Compact</label>
+        <label><input id="toggle-dark" type="checkbox"> Dark</label>
+      </div>
+    </div>
+  </div>
 
   <!-- App shell (the full styles come from styles.css) -->
   <main id="app" class="app">
@@ -59,6 +69,7 @@
         <button id="btn-reset">↺ Reset seed</button>
       </div>
 
+      <div id="empty-state" class="empty-state" hidden>No prompts match your current filters.</div>
       <ul id="tree" class="tree" aria-label="Prompt tree"></ul>
     </section>
   </main>
@@ -71,13 +82,19 @@
         <div class="node-text">
           <div class="node-title"></div>
           <div class="node-summary"></div>
+          <div class="node-tags"></div>
         </div>
         <div class="node-actions">
+          <button class="favorite" title="Toggle favorite" aria-label="Toggle favorite">☆</button>
           <button class="copy" title="Copy prompt">Copy</button>
           <button class="edit" title="Edit">Edit</button>
           <button class="delete" title="Delete">Delete</button>
         </div>
       </div>
+      <details class="prompt-viewer">
+        <summary>View prompt</summary>
+        <div class="prompt-markdown"></div>
+      </details>
       <ul class="children"></ul>
     </li>
   </template>
@@ -89,10 +106,32 @@
       <datalist id="category-datalist"></datalist>
       <label>Title <input name="title" id="f-title" required></label>
       <label>Summary (short) <input name="summary" id="f-summary"></label>
+      <label>Tags <input name="tags" id="f-tags" placeholder="Comma separated"></label>
       <label>Prompt <textarea name="prompt" id="f-prompt" rows="6" required></textarea></label>
       <div class="dialog-actions">
         <button value="cancel">Cancel</button>
         <button id="btn-save" value="default">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="template-dialog">
+    <form method="dialog" class="template-form" id="template-form">
+      <h3>Fill in variables</h3>
+      <div id="template-body" class="template-body"></div>
+      <div class="dialog-actions">
+        <button value="cancel">Cancel</button>
+        <button id="template-submit" value="apply">Copy prompt</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="confirm-dialog">
+    <form method="dialog" class="confirm-form" id="confirm-form">
+      <p id="confirm-message"></p>
+      <div class="dialog-actions">
+        <button id="confirm-cancel" value="cancel">Cancel</button>
+        <button id="confirm-ok" value="confirm">Confirm</button>
       </div>
     </form>
   </dialog>
