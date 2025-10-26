@@ -3,111 +3,98 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dumby App – Prompt Tree</title>
-  <meta name="description" content="Your prompt tree of (lack of) knowledge. Tap, copy, ship." />
+  <title>Dumby – Prompt Tree & Mind Map</title>
   <meta name="theme-color" content="#111111" />
-
-  <!-- PWA bits -->
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon-192.png" sizes="192x192">
-  <link rel="icon" href="./icons/icon-512.png" sizes="512x512">
-
-  <!-- Cache-bust the stylesheet to dodge Pages caching -->
-  <link rel="stylesheet" href="./styles.css?v=1">
-
-  <style>
-    /* very small inline safety styles so the page isn't blank if CSS fails */
-    body{margin:0;font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0f0f10;color:#f2f2f2}
-    .bar{padding:.6rem .9rem;border-bottom:1px solid #2a2a2f;background:#111215}
-    .wrap{max-width:1200px;margin:0 auto}
-    .selfcheck{font-size:.85rem;color:#b7b7b7}
-    .ok{color:#9be39b} .warn{color:#f7c948} .bad{color:#ff6b6b}
-  </style>
+  <link rel="stylesheet" href="./styles.css?v=3">
+  <link rel="stylesheet" href="./map.css?v=1">
+  <style>body{margin:0}</style>
 </head>
 <body>
-  <!-- Top bar -->
-  <div class="bar"><div class="wrap">
-    <strong>🌳 Dumby App</strong> — Prompt Tree
-  </div></div>
-
-  <!-- Toolbar -->
-  <div class="bar">
-    <div class="wrap toolbar" id="toolbar">
-      <div class="toolbar-row">
-        <input id="search" type="search" placeholder="Search prompts, summaries, bodies…" aria-label="Search prompts">
-        <div class="toolbar-group" role="group" aria-label="Tag filters">
-          <span class="toolbar-label">Filter tags</span>
-          <div id="tag-filter" class="tag-filter"><span class="tag-filter-empty">No tags yet</span></div>
-        </div>
-        <label class="favorite-toggle"><input id="toggle-favorites" type="checkbox"> Show favorites</label>
-      </div>
-      <div class="toolbar-row secondary">
-        <label><input id="toggle-descriptions" type="checkbox" checked> Show summaries</label>
-        <label><input id="toggle-compact" type="checkbox"> Compact</label>
-        <label><input id="toggle-dark" type="checkbox"> Dark</label>
-      </div>
+  <header class="app-header">
+    <h1>🌳 Dumby</h1>
+    <nav class="view-tabs" role="tablist" aria-label="View mode">
+      <button id="tab-list" role="tab" aria-selected="true" data-view="list">List</button>
+      <button id="tab-map" role="tab" aria-selected="false" data-view="map">Map</button>
+    </nav>
+    <div class="actions">
+      <button id="btn-add">＋ Add</button>
+      <button id="btn-export">⬇ JSON</button>
+      <label class="file-label">⬆ Import <input id="file-import" type="file" accept="application/json" hidden></label>
+      <button id="btn-export-md">📝 MD</button>
+      <button id="btn-export-opml">🧠 OPML</button>
+      <button id="btn-reset">↺ Reset</button>
     </div>
-  </div>
+  </header>
 
-  <!-- App shell (the full styles come from styles.css) -->
-  <main id="app" class="app">
+  <section class="toolbar">
+    <input id="search" type="search" placeholder="Search title, tags, text…" aria-label="Search" />
+    <div class="toggles">
+      <label><input id="toggle-compact" type="checkbox" /> Compact</label>
+      <label><input id="toggle-dark" type="checkbox" checked /> Dark</label>
+      <label><input id="toggle-descriptions" type="checkbox" checked /> Summaries</label>
+    </div>
+  </section>
+
+  <!-- LIST VIEW (existing functionality) -->
+  <main id="view-list" class="app" data-view="list" aria-hidden="false">
     <aside class="sidebar">
       <h2>Categories</h2>
       <ul id="category-list" class="category-list" aria-label="Categories"></ul>
       <footer class="meta">
         <div id="stats"></div>
-        <div class="version">v1.0 • Local-first</div>
+        <div class="version">v2.0</div>
       </footer>
     </aside>
     <section class="content">
-      <div style="display:flex;gap:.5rem;margin:.5rem 0 .75rem;flex-wrap:wrap">
-        <button id="btn-add">＋ Add</button>
-        <button id="btn-export">⬇ Export JSON</button>
-        <label class="file-label">⬆ Import <input id="file-import" type="file" accept="application/json" hidden></label>
-        <button id="btn-export-md">📝 Export MD</button>
-        <button id="btn-export-opml">🧠 Export OPML</button>
-        <button id="btn-reset">↺ Reset seed</button>
-      </div>
-
-      <div id="empty-state" class="empty-state" hidden>No prompts match your current filters.</div>
       <ul id="tree" class="tree" aria-label="Prompt tree"></ul>
     </section>
   </main>
 
-  <!-- Edit dialog & toast (rendered by app.js) -->
-  <template id="prompt-item">
-    <li class="node">
-      <div class="node-head">
-        <button class="collapse" aria-label="Toggle children" title="Toggle">▾</button>
-        <div class="node-text">
-          <div class="node-title"></div>
-          <div class="node-summary"></div>
-          <div class="node-tags"></div>
-        </div>
-        <div class="node-actions">
-          <button class="favorite" title="Toggle favorite" aria-label="Toggle favorite">☆</button>
-          <button class="copy" title="Copy prompt">Copy</button>
-          <button class="edit" title="Edit">Edit</button>
-          <button class="delete" title="Delete">Delete</button>
-        </div>
-      </div>
-      <details class="prompt-viewer">
-        <summary>View prompt</summary>
-        <div class="prompt-markdown"></div>
-      </details>
-      <ul class="children"></ul>
-    </li>
-  </template>
+  <!-- MAP VIEW (new) -->
+  <main id="view-map" class="map-wrap" data-view="map" aria-hidden="true">
+    <div class="map-toolbar">
+      <span>Mind Map</span>
+      <div class="map-tools">
+        <button id="map-center" title="Center">⦿</button>
+        <button id="map-zoom-in" title="Zoom in">＋</button>
+        <button id="map-zoom-out" title="Zoom out">－</button>
+        <button id="map-expand" title="Expand all">▾▾</button>
+        <button id="map-collapse" title="Collapse all">▸▸</button>
+    </div></div>
+    <svg id="map-svg" class="map-svg" tabindex="0" aria-label="Mind map canvas"></svg>
+    <div id="map-tip" class="map-tip" role="tooltip"></div>
+  </main>
 
+  <!-- Editor Dialog (shared) -->
   <dialog id="edit-dialog">
     <form method="dialog" class="edit-form" id="edit-form">
-      <h3 id="edit-title">Add Prompt</h3>
-      <label>Category <input name="category" id="f-category" required list="category-datalist"></label>
-      <datalist id="category-datalist"></datalist>
-      <label>Title <input name="title" id="f-title" required></label>
-      <label>Summary (short) <input name="summary" id="f-summary"></label>
-      <label>Tags <input name="tags" id="f-tags" placeholder="Comma separated"></label>
-      <label>Prompt <textarea name="prompt" id="f-prompt" rows="6" required></textarea></label>
+      <h3 id="edit-title">Add Node</h3>
+      <label>Parent node ID
+        <input name="parentId" id="f-parent" placeholder="root for top-level"/>
+      </label>
+      <label>Type
+        <select name="type" id="f-type">
+          <option value="prompt">prompt</option>
+          <option value="snippet">snippet</option>
+          <option value="checklist">checklist</option>
+          <option value="template">template</option>
+          <option value="link">link</option>
+          <option value="group">group</option>
+        </select>
+      </label>
+      <label>Title <input name="title" id="f-title" required /></label>
+      <label>Summary <input name="summary" id="f-summary" /></label>
+      <label>Prompt / Content
+        <textarea name="prompt" id="f-prompt" rows="6"></textarea>
+      </label>
+      <label>Tags (comma-separated)
+        <input name="tags" id="f-tags" placeholder="layout, accessibility" />
+      </label>
+      <label>Colour (optional hex or token)
+        <input name="color" id="f-color" placeholder="#66d9ef or accent/good/warn/bad" />
+      </label>
       <div class="dialog-actions">
         <button value="cancel">Cancel</button>
         <button id="btn-save" value="default">Save</button>
@@ -115,70 +102,31 @@
     </form>
   </dialog>
 
-  <dialog id="template-dialog">
-    <form method="dialog" class="template-form" id="template-form">
-      <h3>Fill in variables</h3>
-      <div id="template-body" class="template-body"></div>
-      <div class="dialog-actions">
-        <button value="cancel">Cancel</button>
-        <button id="template-submit" value="apply">Copy prompt</button>
-      </div>
-    </form>
-  </dialog>
-
-  <dialog id="confirm-dialog">
-    <form method="dialog" class="confirm-form" id="confirm-form">
-      <p id="confirm-message"></p>
-      <div class="dialog-actions">
-        <button id="confirm-cancel" value="cancel">Cancel</button>
-        <button id="confirm-ok" value="confirm">Confirm</button>
-      </div>
-    </form>
-  </dialog>
-
   <div id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Self-check panel (shows whether assets loaded OK) -->
-  <div class="bar"><div class="wrap selfcheck" id="selfcheck">Checking assets…</div></div>
+  <!-- Templates -->
+  <template id="prompt-item">
+    <li class="node">
+      <div class="node-head">
+        <button class="collapse" aria-label="Toggle children" title="Toggle">▾</button>
+        <div class="node-text">
+          <div class="node-title"></div>
+          <div class="node-summary"></div>
+        </div>
+        <div class="node-actions">
+          <button class="copy" title="Copy">Copy</button>
+          <button class="edit" title="Edit">Edit</button>
+          <button class="delete" title="Delete">Delete</button>
+        </div>
+      </div>
+      <ul class="children"></ul>
+    </li>
+  </template>
 
-  <!-- Load app with a cache-busting query to avoid sticky SW/CSS -->
-  <script type="module" src="./app.js?v=1"></script>
-
+  <script type="module" src="./app.js?v=4"></script>
+  <script type="module" src="./map.js?v=1"></script>
   <script>
-    // Register SW safely; GitHub Pages requires relative scope
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').catch(() => {});
-    }
-
-    // Tiny self-check so you know what's broken on first publish
-    (async function(){
-      const el = document.getElementById('selfcheck');
-      const ok = s => `<span class="ok">✔ ${s}</span>`;
-      const bad = s => `<span class="bad">✖ ${s}</span>`;
-      const warn = s => `<span class="warn">⚠ ${s}</span>`;
-      const results = [];
-
-      // CSS present?
-      const cssOk = !!document.querySelector('link[href^="./styles.css"]');
-      results.push(cssOk ? ok('styles.css linked') : bad('styles.css missing'));
-
-      // JS present?
-      const jsOk = !!document.querySelector('script[src^="./app.js"]');
-      results.push(jsOk ? ok('app.js linked') : bad('app.js missing'));
-
-      // JSON reachable?
-      try {
-        const r = await fetch('./data/prompts.json', {cache:'no-store'});
-        results.push(r.ok ? ok('prompts.json loaded') : bad('prompts.json failed'));
-      } catch {
-        results.push(bad('prompts.json fetch error'));
-      }
-
-      // SW present?
-      results.push(('serviceWorker' in navigator) ? ok('SW supported') : warn('SW not supported'));
-
-      el.innerHTML = results.join(' · ');
-    })();
+    if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js'); }
   </script>
 </body>
 </html>
