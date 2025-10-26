@@ -107,3 +107,11 @@ dialog::backdrop{background:rgba(0,0,0,0.6);}
   .sidebar{order:2}
   .toolbar-row{flex-direction:column; align-items:stretch;}
 }
+/* keep your existing styles, append these quick theme rules */
+.node-rect{ fill:#17171a; stroke:#66d9ef; stroke-width:2 }
+.node-title{ font: 600 13px/1 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; fill:#f2f2f2 }
+.node-chip{ fill:#b7b7b7 }
+.edge{ stroke:#2a2a2f; stroke-width:2; fill:none }
+.node-toggle{ fill:#b7b7b7 }
+
+/* (rest of your previous CSS remains unchanged) */

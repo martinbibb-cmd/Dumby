@@ -1,0 +1,91 @@
+[
+  {
+    "id": "root-layout",
+    "title": "Layout & Styling",
+    "type": "group",
+    "color": "accent",
+    "tags": ["Layout"],
+    "children": [
+      {
+        "id": "tighten-layout",
+        "title": "Tighten layout",
+        "type": "prompt",
+        "summary": "Remove excess whitespace, prevent horizontal scroll",
+        "tags": ["Layout"],
+        "prompt": "Tighten layout; remove excess whitespace and prevent horizontal scroll; preserve padding for readability."
+      },
+      {
+        "id": "floating-copy",
+        "title": "Floating copy box",
+        "type": "prompt",
+        "tags": ["Layout","UX"],
+        "prompt": "Make the copy box float; position fixed to left side of viewport; remains visible while scrolling."
+      },
+      {
+        "id": "a11y",
+        "title": "Accessibility",
+        "type": "group",
+        "color": "good",
+        "tags": ["Accessibility"],
+        "children": [
+          {
+            "id": "aria-labels",
+            "title": "ARIA and keyboard",
+            "type": "checklist",
+            "summary": "Labels, focus order, contrast",
+            "prompt": "- Add aria-labels and roles where needed\n- Ensure tab order and focus ring\n- Check contrast AA at minimum"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "root-behaviour",
+    "title": "Behaviour & Logic",
+    "type": "group",
+    "tags": ["Behaviour"],
+    "children": [
+      {
+        "id": "live-binding",
+        "title": "Live binding",
+        "type": "snippet",
+        "summary": "Inputs update outputs instantly",
+        "prompt": "Bind input values directly to output field updates; changes appear live without reloading."
+      },
+      {
+        "id": "debounce",
+        "title": "Debounce",
+        "type": "template",
+        "summary": "Limit rapid calls",
+        "prompt": "function debounce(fn, wait=200){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), wait); }; }"
+      }
+    ]
+  },
+  {
+    "id": "root-output",
+    "title": "Copy & Output",
+    "type": "group",
+    "tags": ["Output"],
+    "children": [
+      {
+        "id": "single-combined",
+        "title": "Single combined copy",
+        "type": "prompt",
+        "prompt": "Generate a single combined copy box containing all sections separated by semicolons; easy to paste into Depot."
+      },
+      {
+        "id": "format-modes",
+        "title": "Multiple output modes",
+        "type": "prompt",
+        "prompt": "Allow multiple selectable output formats: Customer Summary (friendly), Engineer Notes (technical), Depot Format (semicolon)."
+      },
+      {
+        "id": "doc-link",
+        "title": "Quote Tool Docs",
+        "type": "link",
+        "href": "https://martinbibb-cmd.github.io/Quote-app/",
+        "summary": "Open related app docs"
+      }
+    ]
+  }
+]
