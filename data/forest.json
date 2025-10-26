@@ -1,0 +1,165 @@
+[
+  {
+    "id": "root-system",
+    "title": "System Dev",
+    "type": "group",
+    "color": "accent",
+    "tags": ["System"],
+    "children": [
+      {
+        "id": "sys-uiux",
+        "title": "UI / UX",
+        "type": "group",
+        "tags": ["UI/UX"],
+        "children": [
+          {
+            "id": "sys-layout",
+            "title": "Layout",
+            "type": "group",
+            "children": [
+              {
+                "id": "tighten-layout",
+                "title": "Tighten layout",
+                "type": "prompt",
+                "summary": "Reduce whitespace, prevent horizontal scroll",
+                "tags": ["Layout"],
+                "prompt": "Tighten layout; remove excess whitespace and prevent horizontal scroll; preserve padding for readability."
+              },
+              {
+                "id": "float-copy",
+                "title": "Floating copy box",
+                "type": "prompt",
+                "tags": ["Layout"],
+                "prompt": "Make the copy box float; position fixed to left side of viewport; remains visible while scrolling."
+              },
+              {
+                "id": "responsive-steps",
+                "title": "Responsive steps",
+                "type": "prompt",
+                "prompt": "Ensure responsive layout; elements stack on small screens and align inline on large."
+              }
+            ]
+          },
+          {
+            "id": "sys-behaviour",
+            "title": "Behaviour",
+            "type": "group",
+            "children": [
+              {
+                "id": "live-binding",
+                "title": "Live binding",
+                "type": "prompt",
+                "summary": "Inputs update outputs instantly",
+                "prompt": "Bind input values directly to output field updates; changes appear live without reloading."
+              },
+              {
+                "id": "debounce",
+                "title": "Debounce input",
+                "type": "template",
+                "summary": "Limit rapid events",
+                "prompt": "function debounce(fn, wait=200){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), wait); }; }"
+              }
+            ]
+          },
+          {
+            "id": "sys-data",
+            "title": "Data",
+            "type": "group",
+            "children": [
+              {
+                "id": "serialize-json",
+                "title": "Serialize to JSON",
+                "type": "prompt",
+                "prompt": "Serialize form data as JSON and store in localStorage; include timestamp and user ID."
+              },
+              {
+                "id": "robust-import",
+                "title": "Robust import",
+                "type": "prompt",
+                "prompt": "Ensure imported JSON restores all UI state correctly; handle invalid JSON safely."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "root-output",
+    "title": "Copy & Output",
+    "type": "group",
+    "color": "good",
+    "tags": ["Output"],
+    "children": [
+      {
+        "id": "single-combined",
+        "title": "Single combined copy",
+        "type": "prompt",
+        "prompt": "Generate a single combined copy box containing all sections separated by semicolons; easy to paste into Depot."
+      },
+      {
+        "id": "format-modes",
+        "title": "Multiple output modes",
+        "type": "prompt",
+        "prompt": "Allow multiple selectable output formats: Customer Summary (friendly), Engineer Notes (technical), Depot Format (semicolon)."
+      }
+    ]
+  },
+  {
+    "id": "root-checks",
+    "title": "Checks",
+    "type": "group",
+    "color": "warn",
+    "tags": ["Checks"],
+    "children": [
+      {
+        "id": "perf-checks",
+        "title": "Performance Checks",
+        "type": "group",
+        "children": [
+          {
+            "id": "perf-cache-bust",
+            "title": "Cache bust",
+            "type": "prompt",
+            "summary": "Avoid stale assets",
+            "prompt": "Cache bust version; append ?v=[timestamp] to script and stylesheet imports."
+          },
+          {
+            "id": "perf-async-defer",
+            "title": "Async/Defer assets",
+            "type": "prompt",
+            "prompt": "Optimise script loading; use async/defer; lazy-load heavy components."
+          }
+        ]
+      },
+      {
+        "id": "a11y-checks",
+        "title": "Accessibility Checks",
+        "type": "checklist",
+        "summary": "A11y essentials",
+        "prompt": "- Add aria-labels/roles where needed\n- Ensure tab order and visible focus ring\n- Minimum contrast AA"
+      },
+      {
+        "id": "qa-checks",
+        "title": "QA / Safety",
+        "type": "checklist",
+        "prompt": "- Validate inputs (postcode, phone)\n- Handle network errors with friendly toasts\n- Confirm destructive actions\n- Provide offline fallback copy"
+      }
+    ]
+  },
+  {
+    "id": "root-links",
+    "title": "Docs & Links",
+    "type": "group",
+    "color": "accent",
+    "children": [
+      {
+        "id": "quote-docs",
+        "title": "Quote Tool Docs",
+        "type": "link",
+        "href": "https://martinbibb-cmd.github.io/Quote-app/",
+        "summary": "Open related app"
+      }
+    ]
+  }
+]
