@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dumby – Prompt Tree</title>
+  <title>Dumby – Grove Map</title>
   <meta name="theme-color" content="#111111" />
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icons/icon-192.png" sizes="192x192">
-  <link rel="stylesheet" href="./styles.css?v=5"><!-- bump to bust cache -->
-  <link rel="stylesheet" href="./map.css?v=2">
+  <link rel="stylesheet" href="./styles.css?v=6">
+  <link rel="stylesheet" href="./mindmap.css?v=1">
   <style>body{margin:0}</style>
 </head>
 <body>
-  <header class="app-header" style="display:flex;align-items:center;justify-content:space-between;padding:.6rem .9rem;border-bottom:1px solid #2a2a2f;background:#111215;color:#f2f2f2">
-    <h1 style="font-size:1.05rem;margin:0">🌳 Dumby</h1>
-    <nav class="view-tabs" role="tablist" aria-label="View mode" style="display:flex;gap:.35rem">
+  <header class="app-header">
+    <h1>🌳 Dumby</h1>
+    <nav class="view-tabs" role="tablist" aria-label="View mode">
       <button id="tab-list" role="tab" aria-selected="true" data-view="list">List</button>
       <button id="tab-map" role="tab" aria-selected="false" data-view="map">Map</button>
     </nav>
-    <div class="actions" style="display:flex;gap:.4rem;flex-wrap:wrap">
+    <div class="actions">
       <button id="btn-add">＋ Add</button>
       <button id="btn-export">⬇ JSON</button>
       <label class="file-label">⬆ Import <input id="file-import" type="file" accept="application/json" hidden></label>
@@ -28,24 +28,23 @@
     </div>
   </header>
 
-  <section class="toolbar" style="display:flex;gap:1rem;align-items:center;padding:.6rem .9rem;border-bottom:1px solid #2a2a2f;background:#111215">
-    <input id="search" type="search" placeholder="Search title, tags, text…" aria-label="Search"
-           style="flex:1;min-width:220px;padding:.55rem .7rem;border-radius:8px;border:1px solid #2a2a2f;background:#0e0f12;color:#f2f2f2">
-    <div class="toggles" style="display:flex;gap:1rem;flex-wrap:wrap">
+  <section class="toolbar">
+    <input id="search" type="search" placeholder="Search title, tags, text…" aria-label="Search" />
+    <div class="toggles">
       <label><input id="toggle-compact" type="checkbox" /> Compact</label>
       <label><input id="toggle-dark" type="checkbox" checked /> Dark</label>
       <label><input id="toggle-descriptions" type="checkbox" checked /> Summaries</label>
     </div>
   </section>
 
-  <!-- LIST VIEW (unchanged functionality) -->
+  <!-- LIST VIEW -->
   <main id="view-list" class="app" data-view="list" aria-hidden="false">
     <aside class="sidebar">
       <h2>Categories</h2>
       <ul id="category-list" class="category-list" aria-label="Categories"></ul>
       <footer class="meta">
         <div id="stats"></div>
-        <div class="version">v2.1</div>
+        <div class="version">v3.0 (grove)</div>
       </footer>
     </aside>
     <section class="content">
@@ -53,10 +52,10 @@
     </section>
   </main>
 
-  <!-- MAP VIEW (new) -->
+  <!-- MIND MAP VIEW -->
   <main id="view-map" class="map-wrap" data-view="map" aria-hidden="true">
     <div class="map-toolbar">
-      <span>Mind Map</span>
+      <span>Grove Map</span>
       <div class="map-tools">
         <button id="map-center" title="Center">⦿</button>
         <button id="map-zoom-in" title="Zoom in">＋</button>
@@ -67,9 +66,10 @@
     </div>
     <svg id="map-svg" class="map-svg" tabindex="0" aria-label="Mind map canvas"></svg>
     <div id="map-tip" class="map-tip" role="tooltip"></div>
+    <button id="map-done" class="map-done" title="Done">Done</button>
   </main>
 
-  <!-- existing template + dialog from your current file -->
+  <!-- Editor + template (same as before) -->
   <template id="prompt-item">
     <li class="node">
       <div class="node-head">
@@ -124,17 +124,18 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
 
-  <script src="./app.js?v=9"></script><!-- plain script, global store -->
-  <script src="./map.js?v=5"></script>
+  <!-- Scripts (plain, no modules) -->
+  <script src="./app.js?v=10"></script>
+  <script src="./mindmap.js?v=1"></script>
   <script>
     if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js'); }
-    // Tab wiring
+    // Tabs
     const setView = v => {
       document.getElementById('view-list').setAttribute('aria-hidden', v!=='list');
       document.getElementById('view-map').setAttribute('aria-hidden', v!=='map');
       document.getElementById('tab-list').setAttribute('aria-selected', v==='list');
       document.getElementById('tab-map').setAttribute('aria-selected', v==='map');
-      if(v==='map' && window.renderMindMap) window.renderMindMap(); // (re)draw
+      if(v==='map' && window.renderGrove) window.renderGrove(true);
     };
     document.getElementById('tab-list').onclick = ()=>setView('list');
     document.getElementById('tab-map').onclick  = ()=>setView('map');
